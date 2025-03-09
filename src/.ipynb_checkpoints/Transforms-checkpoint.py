@@ -89,9 +89,9 @@ class NodeMask:
     
 class AdaptiveNodeNoise(NodeNoise):
     def __call__(self, data_list: List) -> Data:
+        std = torch.cat([data.x for data in data_list], dim=0).std(dim=0)
         for data in data_list:
             # 根据特征标准差自动调整噪声幅度
-            std = data.x.std(dim=0)
             noise = torch.randn_like(data.x) * std * self.noise_scale
             data.x += noise
         return data_list

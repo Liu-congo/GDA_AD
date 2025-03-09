@@ -124,7 +124,6 @@ def train(model, loader, optimizer, device):
         target = data.y.argmax(dim = 1)
         all_preds.extend(pred.cpu().numpy())
         all_labels.extend(target.cpu().numpy())
-    
     # 计算epoch指标
     avg_loss = total_loss / len(loader.dataset)
     acc = accuracy_score(all_labels, all_preds)
@@ -193,9 +192,9 @@ def run_experiment(config):
     # 初始化数据加载器
     loader = GraphDataLoader(
         dataset=dataset,
-        train_ratio=0.6,
-        val_ratio=0.2,
-        test_ratio=0.2,
+        train_ratio=0.2,
+        val_ratio=0.4,
+        test_ratio=0.4,
         batch_size=dataloader_cfg['batch_size'],
         seed=2023,
         train_transforms=dataloader_cfg['transforms']['train'],

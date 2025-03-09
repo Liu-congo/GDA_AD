@@ -1,8 +1,0 @@
-{
-    "test_loss": 0.6916516423225403,
-    "test_accuracy": 0.5,
-    "test_precision": 0.5,
-    "test_recall": 0.7142857142857143,
-    "test_f1": 0.5882352941176471,
-    "training_time": 9.424870014190674
-}

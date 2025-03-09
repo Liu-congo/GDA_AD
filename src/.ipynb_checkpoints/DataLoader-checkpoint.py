@@ -62,6 +62,9 @@ class GraphDataLoader:
                                  ratios=(train_ratio, val_ratio, test_ratio),
                                  seed=seed)
         train_idx, val_idx, test_idx = splitter.split()
+        self.train_idx = train_idx
+        self.val_idx = val_idx
+        self.test_idx = test_idx
         self.train_transforms = train_transforms
         self.eval_transforms = eval_transforms
         self.train_set = self.apply_transform([self.full_dataset[idx] for idx in train_idx], train_transforms)
@@ -93,6 +96,8 @@ class GraphDataLoader:
         )
     @property
     def train(self):
+        # self.train_set = self.apply_transform([self.full_dataset[idx] for idx in self.train_idx], self.train_transforms)
+        # self.train_loader = self.create_loader(self.train_set, shuffle=True)
         return self.train_loader
     
     @property
